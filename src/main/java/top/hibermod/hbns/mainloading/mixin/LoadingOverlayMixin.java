@@ -60,6 +60,9 @@ public abstract class LoadingOverlayMixin {
             if (hbns$lastOverlay != this) {
                 hbns$lastOverlay = this;
                 LoadTrace.reset();
+                // 通知早期窗口：主加载界面已经开始出画面，可以把交接窗口 B 亮出来了。
+                // 早期窗口线程一直在等这个信号，收到后才停掉自己并销毁窗口 A。
+                System.setProperty("hbns.loading.handoff", "1");
                 // 记录「主加载界面开始渲染」的绝对时刻，用于核对它相对各模组初始化的先后顺序
                 org.slf4j.LoggerFactory.getLogger("hbns-loading").info(
                         "[hbns-loading] main loading overlay first frame at {}ms (uptime={}ms, screen={})",
