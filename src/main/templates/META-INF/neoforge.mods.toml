@@ -1,0 +1,30 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+
+[[dependencies.${mod_id}]]
+modId = "neoforge"
+type = "required"
+versionRange = "[${neo_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+# NeoForge 21.x 不会按 <modid>.mixins.json 的命名约定自动发现 mixin 配置，
+# 必须在这里显式登记；且必须放在 [[mods]] / [[dependencies]] 之后
+# （与官方文档和主流模组的写法保持一致，放前面会导致该 jar 被跳过）。
+[[mixins]]
+config = "${mod_id}.mixins.json"

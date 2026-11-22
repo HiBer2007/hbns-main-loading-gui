@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "top.hibermod.hbns.mainloading.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftEarlyRenderMixin",
+    "LoadingOverlayMixin",
+    "ReloadableResourceManagerMixin",
+    "ShaderInstanceMixin",
+    "LanguageMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
